@@ -1,0 +1,11 @@
+{
+  "name": "space_code",
+  "version": "1.0.0",
+  "description": "Bot Space Code",
+  "main": "index.js",
+  "author": "Lucas Borges",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^12.3.1"
+  }
+}
