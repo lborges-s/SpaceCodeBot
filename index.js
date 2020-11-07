@@ -1,9 +1,9 @@
-// const process = require("process");
+require('dotenv').config()
+
 const Discord = require('discord.js');
 const { readdirSync } = require('fs')
 const client = new Discord.Client();
 
-const config = require('./config.json');
 // const cmdFiles = readdirSync('./commands/')
 // const eventFiles = readdirSync('./commands/')
 // console.log('log', `Carregando o total de ${cmdFiles.length} comandos.`)
@@ -63,10 +63,10 @@ client.on('guildMemberAdd', member => {
 client.on('message', async message => {
     if (message.author.bot) return;
     if (message.channel.type === "dm") return;
-    if (!message.content.startsWith(config.prefix)) return;
+    if (!message.content.startsWith(process.env.PREFIX)) return;
 
 
-    const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+    const args = message.content.slice(process.env.PREFIX.length).trim().split(/ +/g);
     const cmd = args.shift().toLowerCase();
     try {
         console.log(`cmd > ${cmd} | args > ${args}`)
@@ -124,7 +124,7 @@ client.on('message', async message => {
 
 });
 
-client.login(config.token);
+client.login(process.env.AUTH_TOKEN);
 
 
 
